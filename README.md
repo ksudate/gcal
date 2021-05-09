@@ -5,4 +5,12 @@ gcal allows you to access your Google Calendar.
 gcal provide minimal functions. For example
 
 - Title of the event
+- Description
 - Hangout link
+
+# Install
+```
+$ git clone
+$ cd gcal
+$ go install
+```

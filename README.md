@@ -10,7 +10,7 @@ gcal provide minimal functions. For example
 
 # Install
 ```
-$ git clone
+$ git clone https://github.com/tmrekk121/gcal.git
 $ cd gcal
 $ go install
 ```

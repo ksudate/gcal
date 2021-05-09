@@ -9,6 +9,7 @@ import (
 	"os"
 	"time"
 
+	"github.com/fatih/color"
 	"golang.org/x/net/context"
 	"golang.org/x/oauth2"
 	"golang.org/x/oauth2/google"
@@ -99,13 +100,22 @@ func main() {
 		fmt.Println("No upcoming events found.")
 	} else {
 		for _, item := range events.Items {
-			date := item.Start.DateTime
+			c := color.New(color.FgCyan)
+			c.Add(color.Underline)
+			date := item.Start.Date
 			hangoutLink := item.HangoutLink
+			descrption := item.Description
 			if date == "" {
-				date = item.Start.Date
+				date = item.Start.DateTime
 			}
 			fmt.Printf("%v (%v)\n", item.Summary, date)
-			fmt.Printf("%v\n", hangoutLink)
+			if descrption != "" {
+				fmt.Printf("Description:\n%v\n", descrption)
+			}
+			if hangoutLink != "" {
+				fmt.Println("Hangout Link:")
+				c.Printf("%v\n\n", hangoutLink)
+			}
 		}
 	}
 }
